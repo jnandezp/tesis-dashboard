@@ -24,7 +24,7 @@
 
 
 </head>
-<body id="app" class="hold-transition login-page">
+<body id="app" class="hold-transition login-page register-page">
 @yield('content')
 
 

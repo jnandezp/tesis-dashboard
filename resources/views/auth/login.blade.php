@@ -55,7 +55,6 @@
                         <!-- /.col -->
                     </div>
                 </form>
-
                 <p class="mb-1">
                     @if (Route::has('password.request'))
                         <a class="" href="{{ route('password.request') }}">

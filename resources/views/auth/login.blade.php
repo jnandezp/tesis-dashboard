@@ -13,7 +13,9 @@
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="input-group mb-3">
-                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Email">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                               name="email" value="{{ old('email') }}" required autocomplete="email" autofocus
+                               placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -26,7 +28,9 @@
                         @enderror
                     </div>
                     <div class="input-group mb-3">
-                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Password">
+                        <input id="password" type="password"
+                               class="form-control @error('password') is-invalid @enderror" name="password" required
+                               autocomplete="current-password" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -42,7 +46,8 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary">
-                                <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                <input type="checkbox" name="remember"
+                                       id="remember" {{ old('remember') ? 'checked' : '' }}>
                                 <label for="remember">
                                     {{ __('Remember Me') }}
                                 </label>
@@ -63,7 +68,11 @@
                     @endif
                 </p>
                 <p class="mb-0">
-                    <a href="{{route('register')}}" class="text-center">Register a new membership</a>
+                    @if (Route::has('register'))
+                        <a href="{{route('register')}}" class="text-center">
+                            {{ __('Register a new membership') }}
+                        </a>
+                    @endif
                 </p>
             </div>
             <!-- /.login-card-body -->

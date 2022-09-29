@@ -48,7 +48,15 @@
                                             </a>
                                         </td>
                                         <td class="blog-content">
-                                            {{ strip_tags($post->content) }}
+                                            {{ Str::limit($post->content, 50) }}
+                                        </td>
+                                        <td class="blog-writer">
+
+                                            {{ $post->writer->fullName }}
+                                        </td>
+                                        <td class="blog-writer-email">
+                                            {{ $post->writer->email }}
+
                                         </td>
                                         <td class="blog-created-at">
                                             {{ $post->created_at }}

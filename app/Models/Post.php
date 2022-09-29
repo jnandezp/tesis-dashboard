@@ -20,4 +20,9 @@ class Post extends Model
         'title',
         'content',
     ];
+
+    public function writer()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
 }

@@ -193,6 +193,7 @@
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    @if(!empty(Config::get('blog.name')))
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                     <li class="nav-item {{ request()->routeIs('posts.*') ? 'menu-is-opening menu-open' : '' }}">
@@ -218,6 +219,7 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
                     <li class="nav-item">
                         <a href="../widgets.html" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>

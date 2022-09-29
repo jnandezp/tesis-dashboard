@@ -11,13 +11,17 @@
 |
 */
 use App\Http\Controllers\HomeController;
+use Modules\Blog\Http\Controllers\PostController;
 
-Route::prefix('blog')->group(function() {
+/*Route::prefix('blog')->group(function() {
     Route::get('/', 'BlogController@index');
+});*/
+
+
+Route::group(['prefix' => 'posts', 'as' => 'posts.'], function() {
+    Route::get('/', 'PostController@index')->name('index');
+    Route::get('/create', [PostController::class, 'create'])->name('create');
 });
 
-Route::prefix('posts')->group(function() {
-    Route::get('/', 'PostController@index');
-});
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/home', [HomeController::class, 'index'])->name('home');

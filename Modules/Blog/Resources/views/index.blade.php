@@ -71,12 +71,18 @@
                                 </table>
                                 <!-- /.table -->
                             </div>
+                            <div class="float-left p-0 mt-3 mx-3">
+                                {{ $posts->links() }}
+                            </div>
+                            <div class="float-right p-0 mt-3 mx-3">
+                                <a class="btn btn-outline-success" href="{{route('posts.create')}}">
+                                    {{ __('Nueva Entrada') }}
+                                </a>
+                            </div>
 
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer p-0">
-                            {{ $posts->links() }}
-                        </div>
+                        {{--<div class="card-footer"></div>--}}
                     </div>
                     <!-- /.card -->
                 </div>

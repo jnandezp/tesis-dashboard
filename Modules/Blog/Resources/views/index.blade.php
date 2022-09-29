@@ -65,6 +65,9 @@
                                             <a class="btn btn-outline-primary btn-sm" href="{{ route('posts.show', $post) }}">
                                                 Ver
                                             </a>
+                                            <a class="btn btn-outline-secondary btn-sm" href="{{ route('posts.edit', $post) }}">
+                                                Editar
+                                            </a>
                                         </td>
                                     </tr>
                                     @empty

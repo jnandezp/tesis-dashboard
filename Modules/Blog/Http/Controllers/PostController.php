@@ -66,9 +66,9 @@ class PostController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        return view('blog::edit');
+        return view('blog::edit', compact('post'));
     }
 
     /**
@@ -77,9 +77,17 @@ class PostController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $post->fill($request->all());
+        $status = $post->save();
+
+        // ALL OK
+        if ($status){
+            return redirect()->route('posts.show', $post->id)->with('success','se proceso correctamente');
+        }
+
+        return redirect()->route('home')->with('error','ocurrio un error al procesar tu peticion');
     }
 
     /**

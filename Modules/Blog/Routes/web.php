@@ -23,6 +23,8 @@ Route::group(['prefix' => 'posts', 'as' => 'posts.','middleware'=>'is.admin'], f
     Route::get('/create', [PostController::class, 'create'])->name('create');
     Route::post('/store', [PostController::class, 'store'])->name('store');
     Route::get('/show/{post}', [PostController::class, 'show'])->name('show');
+    Route::get('/edit/{post}', [PostController::class, 'edit'])->name('edit');
+    Route::patch('/update/{post}', [PostController::class, 'update'])->name('update');
 });
 
 

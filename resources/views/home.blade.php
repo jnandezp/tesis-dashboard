@@ -36,7 +36,36 @@
         </div>
         <!-- /.card-footer-->
     </div>
+
+
     <!-- /.card -->
+
+    <p>
+        <img src="https://miro.medium.com/max/875/1*lqR-AVU5L_i9qu4lnfls-w.jpeg">
+    </p>
+    <div class="hz ia ib ic id" style="box-sizing:inherit;overflow-wrap:break-word;word-break:break-word;">
+        <p class="pw-post-body-paragraph jo jp ig jq b jr js jt ju jv jw jx jy jz ka kb kc kd ke kf kg kh ki kj kk kl hz gh" style="box-sizing:inherit;color:rgb(41, 41, 41);font-family:source-serif-pro, Georgia, Cambria, &quot;Times New Roman&quot;, Times, serif;font-size:20px;font-style:normal;font-weight:400;letter-spacing:-0.003em;line-height:32px;margin:2em 0px -0.46em;text-align:justify;word-break:break-word;" id="8e08" data-selectable-paragraph="">
+            Seguramente en algún punto dentro del desarrollo de nuestra base de datos hemos atravesado por alguna de estas fases: <em class="km" style="box-sizing:inherit;"><i>Análisis de requerimientos</i></em> donde definimos las reglas de negocio, <em class="km" style="box-sizing:inherit;"><i>Diseño de la Solución</i></em> donde modelamos la información (Modelo Conceptual) y la representamos de forma gráfica, y la <em class="km" style="box-sizing:inherit;"><i>Implementación</i></em> (Modelo Físico) donde básicamente llevamos a la realidad la manera en que se almacenará nuestra información, es decir, donde creamos la base de datos, las tablas, las columnas, generamos los índices, establecemos las restricciones, etc.
+        </p>
+        <p class="pw-post-body-paragraph jo jp ig jq b jr js jt ju jv jw jx jy jz ka kb kc kd ke kf kg kh ki kj kk kl hz gh" style="box-sizing:inherit;color:rgb(41, 41, 41);font-family:source-serif-pro, Georgia, Cambria, &quot;Times New Roman&quot;, Times, serif;font-size:20px;font-style:normal;font-weight:400;letter-spacing:-0.003em;line-height:32px;margin:2em 0px -0.46em;text-align:justify;word-break:break-word;" id="44c0" data-selectable-paragraph="">
+            Es en esta fase de <em class="km" style="box-sizing:inherit;"><i>implementación</i></em> donde por lo regular hacemos uso de un gestor de base de datos como Mysql, Oracle, PostgreSQL, SQL Server, Mongodb, etc, para llevar a cabo las tareas previamente mencionadas, y es en esta fase donde haremos mayor énfasis.
+        </p>
+        <p class="pw-post-body-paragraph jo jp ig jq b jr js jt ju jv jw jx jy jz ka kb kc kd ke kf kg kh ki kj kk kl hz gh" style="box-sizing:inherit;color:rgb(41, 41, 41);font-family:source-serif-pro, Georgia, Cambria, &quot;Times New Roman&quot;, Times, serif;font-size:20px;font-style:normal;font-weight:400;letter-spacing:-0.003em;line-height:32px;margin:2em 0px -0.46em;text-align:justify;word-break:break-word;" id="50c5" data-selectable-paragraph="">
+            Por lo común, las tareas dentro del <em class="km" style="box-sizing:inherit;"><i>Modelo Físico</i></em> se llevan a cabo de forma manual, por ejemplo, directamente a través de un cliente en consola o a través de una interfaz gráfica como Mysql Workbench o DBeaver. Otra manera de lidiar con esta tarea es a través de la codificación de un script que automatice esta tarea por nosotros. En cualquier caso, llegar a ejecutar los cambios de nuestra db de alguna de estas formas puede llegar a ser complicada y/o engorrosa.
+        </p>
+        <p class="pw-post-body-paragraph jo jp ig jq b jr js jt ju jv jw jx jy jz ka kb kc kd ke kf kg kh ki kj kk kl hz gh" style="box-sizing:inherit;color:rgb(41, 41, 41);font-family:source-serif-pro, Georgia, Cambria, &quot;Times New Roman&quot;, Times, serif;font-size:20px;font-style:normal;font-weight:400;letter-spacing:-0.003em;line-height:32px;margin:2em 0px -0.46em;text-align:justify;word-break:break-word;" id="4cf2" data-selectable-paragraph="">
+            Con Laravel, todas estas tareas pueden ser llevadas a cabo de una forma más sencilla y gestionable a través del uso de las <em class="km" style="box-sizing:inherit;"><i><strong class="jq ih" style="box-sizing:inherit;font-family:source-serif-pro, Georgia, Cambria, &quot;Times New Roman&quot;, Times, serif;">migraciones</strong></i></em>.
+        </p>
+        <p class="pw-post-body-paragraph jo jp ig jq b jr js jt ju jv jw jx jy jz ka kb kc kd ke kf kg kh ki kj kk kl hz gh" style="box-sizing:inherit;color:rgb(41, 41, 41);font-family:source-serif-pro, Georgia, Cambria, &quot;Times New Roman&quot;, Times, serif;font-size:20px;font-style:normal;font-weight:400;letter-spacing:-0.003em;line-height:32px;margin:2em 0px -0.46em;text-align:justify;word-break:break-word;" id="81e0" data-selectable-paragraph="">
+            Una <em class="km" style="box-sizing:inherit;"><i><strong class="jq ih" style="box-sizing:inherit;font-family:source-serif-pro, Georgia, Cambria, &quot;Times New Roman&quot;, Times, serif;">migración</strong></i></em> nos permite crear y alterar el esquema de nuestras tablas, generar índices, establecer restricciones, etc, sin embargo, también actúa como una especie de control de versiones sobre nuestra base de datos, esto es, si eventualmente necesitamos consultar un cambio anterior o decidimos que la versión inicial o previa era la que se necesita, en lugar de reescribir todo, simplemente lanzando algunos comandos podemos volver hacia atrás en la línea de tiempo de nuestra db.
+        </p>
+        <p class="pw-post-body-paragraph jo jp ig jq b jr js jt ju jv jw jx jy jz ka kb kc kd ke kf kg kh ki kj kk kl hz gh" style="box-sizing:inherit;color:rgb(41, 41, 41);font-family:source-serif-pro, Georgia, Cambria, &quot;Times New Roman&quot;, Times, serif;font-size:20px;font-style:normal;font-weight:400;letter-spacing:-0.003em;line-height:32px;margin:2em 0px -0.46em;text-align:justify;word-break:break-word;" id="81e0" data-selectable-paragraph="">
+            &lt;script src="https://gist.github.com/manigandham/65543a0bc2bf7006a487.js"&gt;&lt;/script&gt;
+        </p>
+        <div class="raw-html-embed">
+            <script src="https://gist.github.com/manigandham/65543a0bc2bf7006a487.js"></script>
+        </div>
+    </div>
 @endsection
 
 @section('script')

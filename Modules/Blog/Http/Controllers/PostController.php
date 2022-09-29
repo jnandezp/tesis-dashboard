@@ -95,8 +95,16 @@ class PostController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $status = $post->delete();
+
+        // ALL OK
+        if ($status){
+            return redirect()->route('posts.index')->with('success','se proceso correctamente');
+        }
+
+        return redirect()->route('home')->with('error','ocurrio un error al procesar tu peticion');
+
     }
 }

@@ -25,6 +25,8 @@ Route::group(['prefix' => 'posts', 'as' => 'posts.','middleware'=>'is.admin'], f
     Route::get('/show/{post}', [PostController::class, 'show'])->name('show');
     Route::get('/edit/{post}', [PostController::class, 'edit'])->name('edit');
     Route::patch('/update/{post}', [PostController::class, 'update'])->name('update');
+    Route::delete('/delete/{post}', [PostController::class, 'destroy'])->name('destroy');
+    Route::patch('/restore/{post}', [PostController::class, 'restore'])->name('restore');
 });
 
 

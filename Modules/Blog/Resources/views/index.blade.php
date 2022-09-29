@@ -68,6 +68,23 @@
                                             <a class="btn btn-outline-secondary btn-sm" href="{{ route('posts.edit', $post) }}">
                                                 Editar
                                             </a>
+                                            @if($post->trashed())
+                                                <form action="{{route('posts.restore', $post->id)}}" method="POST" class="p-0 m-0 d-inline">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <button class="btn btn-sm btn-success">
+                                                        <i class="fas fa-trash-restore"></i>
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <form action="{{route('posts.destroy', $post->id)}}" method="POST" class="p-0 m-0 d-inline">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="btn btn-sm btn-danger">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
+                                                </form>
+                                            @endif
                                         </td>
                                     </tr>
                                     @empty

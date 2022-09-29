@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('created_by');
             $table->string('title');
-            $table->text('content');
+            $table->longText('content');
             $table->text('cover')->nullable();
             $table->text('thumbnail')->nullable();
             $table->enum('publication',['draft','private','public'])->default('private');

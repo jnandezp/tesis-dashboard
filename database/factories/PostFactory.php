@@ -22,7 +22,7 @@ class PostFactory extends Factory
             'cover' => 'https://placekitten.com/1920/1080',
             'thumbnail' => 'https://placekitten.com/192/108',
             'created_by' => $user,
-            'name' => fake()->realText(fake()->numberBetween(10, 20)),
+            'title' => fake()->realText(fake()->numberBetween(10, 20)),
             'content' => fake()->realText(fake()->numberBetween(20, 40)),
         ];
     }

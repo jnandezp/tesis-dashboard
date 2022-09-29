@@ -42,21 +42,21 @@
                                         <td class="blog-name">
                                             <img src="{{ $post->thumbnail }}" class="img-size-64"/>
                                         </td>
-                                        <td class="blog-name">
-                                            <a href="#">
-                                                {{ $post->name }}
+                                        <td class="blog-title">
+                                            <a href="{{ route('posts.show', $post) }}">
+                                                {{ $post->title }}
                                             </a>
                                         </td>
                                         <td class="blog-content">
-                                            {{ $post->content }}
+                                            {{ strip_tags($post->content) }}
                                         </td>
                                         <td class="blog-created-at">
                                             {{ $post->created_at }}
                                         </td>
                                         <td class="blog-actions">
-                                            <button class="btn btn-outline-primary btn-sm">
+                                            <a class="btn btn-outline-primary btn-sm" href="{{ route('posts.show', $post) }}">
                                                 Ver
-                                            </button>
+                                            </a>
                                         </td>
                                     </tr>
                                     @empty

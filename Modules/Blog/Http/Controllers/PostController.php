@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(10)->withQueryString();;
+        $posts = Post::orderByDesc('id')->paginate(10)->withQueryString();;
         return view('blog::index', compact('posts'));
     }
 
@@ -35,7 +35,16 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post($request->all());
+        $post->created_by = $request->user()->id;
+        $status = $post->save();
+
+        // ALL OK
+        if ($status){
+            return redirect()->route('posts.show', $post->id)->with('success','se proceso correctamente');
+        }
+
+        return redirect()->route('home')->with('error','ocurrio un error al procesar tu peticion');
     }
 
     /**
@@ -43,9 +52,9 @@ class PostController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        return view('blog::show');
+        return view('blog::show', compact('post'));
     }
 
     /**

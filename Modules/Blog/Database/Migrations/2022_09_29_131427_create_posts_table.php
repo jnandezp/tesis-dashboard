@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('created_by');
-            $table->string('name');
+            $table->string('title');
             $table->text('content');
             $table->text('cover')->nullable();
             $table->text('thumbnail')->nullable();
-
+            $table->enum('publication',['draft','private','public'])->default('private');
             $table->timestamps();
             $table->softDeletes();
 

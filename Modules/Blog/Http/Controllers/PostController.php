@@ -35,8 +35,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $publish = $request->publish;
         $post = new Post($request->all());
         $post->created_by = $request->user()->id;
+        if ($publish!=='on'){
+            $post->publication = 'draft';
+        }
         $status = $post->save();
 
         // ALL OK

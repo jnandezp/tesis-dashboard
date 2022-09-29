@@ -52,6 +52,10 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="publish" name="publish">
+                                    <label class="form-check-label" for="publish">¿Deseas publicar?</label>
+                                </div>
                             </div>
                             <!-- /.card-body -->
 
@@ -79,16 +83,17 @@
                 items: [
                     'selectAll', '|',
                     'heading', '|',
-                    'bold', 'italic', 'strikethrough', 'underline', 'code', 'subscript', 'superscript', 'removeFormat', '|',
+                    'bold', 'italic', 'strikethrough', 'underline', '|',
+                    'subscript', 'superscript', 'removeFormat', '|',
                     'bulletedList', 'numberedList', 'todoList', '|',
                     'outdent', 'indent', '|',
                     'undo', 'redo',
                     '-',
                     'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'highlight', '|',
                     'alignment', '|',
-                    'link', 'insertImage', 'blockQuote', 'insertTable', 'mediaEmbed', 'codeBlock', 'htmlEmbed', '|',
+                    'link', 'insertImage', 'blockQuote', 'insertTable', '|',
+                    'code', 'codeBlock', 'htmlEmbed', '|',
                     'specialCharacters', 'horizontalLine', 'pageBreak', '|',
-                    'textPartLanguage', '|',
                     'sourceEditing'
                 ],
                 shouldNotGroupWhenFull: true

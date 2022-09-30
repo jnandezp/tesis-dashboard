@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Blog\Http\Controllers;
+namespace Modules\Post\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Contracts\Support\Renderable;

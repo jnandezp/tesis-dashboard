@@ -1,19 +1,20 @@
 version: '3.4'
 services:
   tesis_dashboard:
-        image: tesis_dashboard
-        build:
-            context: .
-            dockerfile: Dockerfile-sandbox
-        volumes:
-            - "./:/var/www"
-        ports:
-            - 8083:80
-        environment:
-            LETSENCRYPT_EMAIL: a@pekxel.com
-            LETSENCRYPT_HOST: golf4cash.pekxel.com
-            VIRTUAL_HOST: golf4cash.pekxel.com
-            WEB_DOCUMENT_ROOT: /var/www/public
-        external_links:
-            - general-mysql:mysql
-        network_mode: "bridge"
+    image: tesis_dashboard
+    build:
+      context: .
+      dockerfile: Dockerfile-sandbox
+    volumes:
+      - "./:/var/www"
+    ports:
+      - 8083:80
+    environment:
+      LETSENCRYPT_EMAIL: jnandezp@gmail.com
+      LETSENCRYPT_HOST: dashboard.nightcoders.dev
+      VIRTUAL_HOST: dashboard.nightcoders.dev
+      WEB_DOCUMENT_ROOT: /var/www/public
+    external_links:
+      - mysql:mysql
+    network_mode: "bridge"
+    restart: unless-stopped

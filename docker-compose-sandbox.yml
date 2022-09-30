@@ -2,7 +2,9 @@ version: '3.4'
 services:
   tesis_dashboard:
         image: tesis_dashboard
-        build: .
+        build:
+            context: .
+            dockerfile: Dockerfile-sandbox
         volumes:
             - "./:/var/www"
         ports:

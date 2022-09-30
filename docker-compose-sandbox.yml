@@ -1,0 +1,17 @@
+version: '1.0'
+services:
+  tesis_dashboard:
+        image: tesis_dashboard
+        build: .
+        volumes:
+            - "./:/var/www"
+        ports:
+            - 8083:80
+        environment:
+            LETSENCRYPT_EMAIL: a@pekxel.com
+            LETSENCRYPT_HOST: golf4cash.pekxel.com
+            VIRTUAL_HOST: golf4cash.pekxel.com
+            WEB_DOCUMENT_ROOT: /var/www/public
+        external_links:
+            - general-mysql:mysql
+        network_mode: "bridge"

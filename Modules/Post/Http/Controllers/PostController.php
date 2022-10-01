@@ -16,7 +16,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderByDesc('id')->paginate(10)->withQueryString();;
-        return view('blog::index', compact('posts'));
+        return view('post::index', compact('posts'));
     }
 
     /**
@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('blog::create');
+        return view('post::create');
     }
 
     /**
@@ -58,7 +58,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('blog::show', compact('post'));
+        return view('post::show', compact('post'));
     }
 
     /**
@@ -68,7 +68,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('blog::edit', compact('post'));
+        return view('post::edit', compact('post'));
     }
 
     /**

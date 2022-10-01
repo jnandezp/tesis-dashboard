@@ -9,11 +9,12 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
-{{--    <link rel="dns-prefetch" href="//fonts.gstatic.com">--}}
-{{--    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">--}}
+    {{--    <link rel="dns-prefetch" href="//fonts.gstatic.com">--}}
+    {{--    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">--}}
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -56,7 +57,8 @@
                 <div class="navbar-search-block">
                     <form class="form-inline">
                         <div class="input-group input-group-sm">
-                            <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                            <input class="form-control form-control-navbar" type="search" placeholder="Search"
+                                   aria-label="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-navbar" type="submit">
                                     <i class="fas fa-search"></i>
@@ -80,7 +82,8 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                            <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar"
+                                 class="img-size-50 mr-3 img-circle">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Brad Diesel
@@ -96,7 +99,8 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     John Pierce
@@ -112,7 +116,8 @@
                     <a href="#" class="dropdown-item">
                         <!-- Message Start -->
                         <div class="media">
-                            <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                            <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar"
+                                 class="img-size-50 img-circle mr-3">
                             <div class="media-body">
                                 <h3 class="dropdown-item-title">
                                     Nora Silvester
@@ -160,7 +165,8 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
         <a href="/" class="brand-link">
-            <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            <img src="/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
             <span class="brand-text font-weight-light">
             {{ config('app.name', 'Laravel') }}
             </span>
@@ -181,7 +187,8 @@
             <!-- SidebarSearch Form -->
             <div class="form-inline">
                 <div class="input-group" data-widget="sidebar-search">
-                    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                           aria-label="Search">
                     <div class="input-group-append">
                         <button class="btn btn-sidebar">
                             <i class="fas fa-search fa-fw"></i>
@@ -192,33 +199,36 @@
 
             <!-- Sidebar Menu -->
             <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
                     @if(!empty(Config::get('blog.name')))
-                    <!-- Add icons to the links using the .nav-icon class
+                        <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
-                    <li class="nav-item {{ request()->routeIs('posts.*') ? 'menu-is-opening menu-open' : '' }}">
-                        <a href="#" class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p>
-                                Entradas
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview treeview-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('posts.index') }}" class="nav-link {{ request()->routeIs('posts.index') ? 'active' : '' }}">
-                                    <i class="fas fa-list nav-icon"></i>
-                                    <p>Listado</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('posts.create') }}" class="nav-link {{ request()->routeIs('posts.create') ? 'active' : '' }}">
-                                    <i class="fas fa-plus nav-icon"></i>
-                                    <p>Nueva</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                        <li class="nav-item {{ request()->routeIs('posts.*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Entradas
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview treeview-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('posts.index') }}"
+                                       class="nav-link {{ request()->routeIs('posts.index') ? 'active' : '' }}">
+                                        <i class="fas fa-list nav-icon"></i>
+                                        <p>Listado</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('posts.create') }}"
+                                       class="nav-link {{ request()->routeIs('posts.create') ? 'active' : '' }}">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Nueva</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     @endif
                     <li class="nav-item">
                         <a href="../widgets.html" class="nav-link">
@@ -329,8 +339,41 @@
         <!-- Main content -->
 
         <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        @if(Session::has('error'))
+                            <div class="callout callout-danger">
+                                <h5>
+                                    <i class="fas fa-exclamation-circle text-danger"></i>
+                                    Message:
+                                </h5>
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
+                        @if(Session::has('success'))
+                            <div class="callout callout-success">
+                                <h5>
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    Message:
+                                </h5>
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
+                        @if(session::has('message'))
+                            <div class="callout callout-info">
+                                <h5>
+                                    <i class="fas fa-info"></i>
+                                    Message:
+                                </h5>
+                                {{ Session::get('message') }}
+                            </div>
+                        @endif
 
-            @yield('content')
+                        @yield('content')
+                    </div>
+                </div>
+            </div>
 
         </section>
         <!-- /.content -->

@@ -35,11 +35,22 @@
                         <!-- /.card-header -->
                         <div class="card-body p-0">
                             <div class="table-responsive blog-posts">
-                                <table class="table table-hover table-striped p-0 m-0">
+                                <table class="table table-hover p-0 m-0 text-nowrap">
+                                    <thead>
+                                    <tr>
+                                        <th>Cover</th>
+                                        <th>Title</th>
+                                        <th>Content</th>
+                                        <th>Writer</th>
+                                        <th>Email</th>
+                                        <th>Created At</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    </thead>
                                     <tbody>
                                     @forelse($posts as $post)
                                     <tr>
-                                        <td class="blog-name">
+                                        <td class="blog-cover">
                                             <img src="{{ $post->thumbnail }}" class="img-size-64"/>
                                         </td>
                                         <td class="blog-title">
@@ -50,13 +61,11 @@
                                         <td class="blog-content">
                                             {{ Str::limit($post->content, 50) }}
                                         </td>
-                                        <td class="blog-writer">
-
+                                        <td class="blog-writer->name">
                                             {{ $post->writer->fullName }}
                                         </td>
                                         <td class="blog-writer-email">
                                             {{ $post->writer->email }}
-
                                         </td>
                                         <td class="blog-created-at">
                                             {{ $post->created_at }}

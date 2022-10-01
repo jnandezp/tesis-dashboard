@@ -23,6 +23,7 @@
     {{--<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>--}}
     <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>
 
+    @livewireStyles
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -403,6 +404,9 @@
 <script src="/dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 {{--<script src="/dist/js/demo.js"></script>--}}
+
+@livewireScripts
+
 @yield('script')
 </body>
 </html>

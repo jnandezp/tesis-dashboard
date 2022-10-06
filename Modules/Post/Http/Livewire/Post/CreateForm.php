@@ -45,7 +45,7 @@ class CreateForm extends Component
 
             // generamos una copia del archivo y modificamos su tamaño
             $pathThumbnail = $this->cover->store('posts/'.$post->id.'/thumbnail', 'public');
-            $image = $this->createThumbnail(storage_path('app/public/').$pathThumbnail, null, 200);
+            $image = $this->createThumbnail(storage_path('app/public/').$pathThumbnail, null, Post::THUMBNAIL_SIZE_HEIGHT);
 
             // Update
             $post->update([

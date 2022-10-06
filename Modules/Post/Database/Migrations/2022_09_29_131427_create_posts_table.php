@@ -20,7 +20,7 @@ return new class extends Migration
             $table->longText('content');
             $table->text('cover')->nullable();
             $table->text('thumbnail')->nullable();
-            $table->enum('publication',['draft','private',''])->default('private');
+            $table->enum('publication',['draft','private','public'])->default('draft');
             $table->timestamps();
             $table->softDeletes();
 

@@ -22,4 +22,10 @@ Route::group(['prefix' => 'posts', 'as' => 'posts.','middleware'=>'is.admin'], f
     Route::patch('/update/{post}', [PostController::class, 'update'])->name('update');
     Route::delete('/delete/{post}', [PostController::class, 'destroy'])->name('destroy');
     Route::patch('/restore/{post}', [PostController::class, 'restore'])->name('restore');
+
+    Route::group(['prefix' => 'image', 'as' => 'image.','middleware'=>'is.admin'], function() {
+        Route::post('/upload', [PostController::class, 'imageUpload'])->name('upload');
+    });
+
+
 });

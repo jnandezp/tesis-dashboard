@@ -22,7 +22,6 @@
 
     {{--<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>--}}
     <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>
-
     @livewireStyles
 
     <!-- Scripts -->

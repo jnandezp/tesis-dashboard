@@ -65,6 +65,11 @@ class CreateForm extends Component
         return $img->save($pathThumbnail);
     }
 
+    public function inputClear($inputId)
+    {
+        $this->$inputId = "";
+    }
+
     public function render()
     {
         return view('post::livewire.post.create-form');

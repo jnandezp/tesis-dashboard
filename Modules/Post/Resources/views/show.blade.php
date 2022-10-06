@@ -13,6 +13,7 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-body">
+            <img src="{{ asset('storage/'.$post->thumbnail) }}" class="img-fluid"/>
             <h1>{{$post->title}}</h1>
             <div id="editor">
                 {!! $post->content !!}

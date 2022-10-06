@@ -33,14 +33,41 @@
                 </span>
                 @enderror
             </div>
+
+            <div>
+                @if($cover)
+                    <div class="form-group">
+                        <label for="post-preview">Preview</label>
+                        <div class="input-group">
+                            <div>
+                                <img src="{{ $cover->temporaryUrl() }}" alt="" class="img-fluid img-thumbnail">
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
+
             <div class="form-group">
-                <label for="exampleInputFile">File input</label>
+                <label for="post-cover">Portada</label>
                 <div class="input-group">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                    <input type="file" class="form-control" id="post-cover"
+                           wire:model="cover"
+                           wire:click="inputClear('cover')"
+                           name="cover"
+                           accept="image/*">
+                </div>
+                <div wire:loading wire:target="cover">
+                    <div>
+                        <p>
+                            Uploading...
+                        </p>
                     </div>
                 </div>
+                @error('cover')
+                <span id="post-cover-error" class="error invalid-feedback" style="display: inline;">
+                    {{ $message }}
+                </span>
+                @enderror
             </div>
             <div class="form-check">
                 <input type="checkbox" class="form-check-input" id="publish" name="publish">

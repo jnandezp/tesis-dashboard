@@ -16,6 +16,16 @@ class PostsList extends Component
     {
         $posts = Post::orderByDesc('id')->paginate(10)->withQueryString();
 
-        return view('post::livewire.post.posts-list', compact('posts'));
+        return view('post::livewire.post.posts-list',['posts' => $posts]);
+    }
+
+    public function deletePost($postId){
+        $post = Post::find($postId);
+        $post->delete();
+
+        // Actualiza la vista para que se elimine visualmente
+        $this->render();
+
+
     }
 }

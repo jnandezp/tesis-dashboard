@@ -41,4 +41,9 @@ class Post extends Model implements HasMedia
     {
         return $this->belongsTo(User::class, 'created_by');
     }
+
+    protected static function newFactory()
+    {
+        return \Modules\Post\Database\factories\PostFactory::new();
+    }
 }

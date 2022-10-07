@@ -11,4 +11,8 @@ class User extends \App\Models\User
 
     protected $fillable = [];
 
+    protected static function newFactory()
+    {
+        return \Modules\Post\Database\factories\UserFactory::new();
+    }
 }

@@ -1,15 +1,20 @@
 <?php
 
-namespace Database\Factories;
+namespace Modules\Post\Database\factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\User\Entities\User;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
- */
+
 class PostFactory extends Factory
 {
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = \Modules\Post\Entities\Post::class;
+
     /**
      * Define the model's default state.
      *

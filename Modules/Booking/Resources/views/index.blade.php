@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Dashboard
+    Booking
 @endsection
 
 @section('breadcrumb')
@@ -11,20 +11,18 @@
 
 @section('content')
     <div class="row">
-        <!-- left column -->
-        <div class="col-md-6">
-            <!-- Default box -->
-            <div class="card">
-                <div class="card-body">
-                    PERFIL
+        <!-- /.col -->
+        <div class="col-md-12">
+            <div class="card card-primary">
+                <div class="card-body p-0">
+                    <!-- THE CALENDAR -->
+                    Booking
                 </div>
                 <!-- /.card-body -->
             </div>
+            <!-- /.card -->
         </div>
+        <!-- /.col -->
     </div>
-    <!-- /.card -->
-@endsection
-
-@section('script')
-
+    <!-- /.row -->
 @endsection

@@ -17,22 +17,18 @@
 @endsection
 
 @section('content')
-    <section class="content">
-        <div class="container-fluid">
-            <div class="row">
-                <!-- left column -->
-                <div class="col-md-6">
-                    <!-- general form elements -->
-                    <div class="card card-primary">
-                        <livewire:post::post.create-form/>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <!--/.col (right) -->
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <livewire:post::post.create-form/>
             </div>
-            <!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </section>
+            <!-- /.card -->
+        </div>
+        <!--/.col (right) -->
+    </div>
+    <!-- /.row -->
 @endsection
 @section('script')
     <script src="/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>

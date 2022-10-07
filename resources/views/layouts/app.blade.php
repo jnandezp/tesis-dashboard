@@ -22,6 +22,7 @@
 
     {{--<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>--}}
     <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>
+
     @livewireStyles
 
     <!-- Scripts -->
@@ -139,7 +140,7 @@
                     <i class="fas fa-cog"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="#" class="dropdown-item">
+                    <a href="{{ route('user.profile') }}" class="dropdown-item">
                         <i class="fas fa-user mr-2"></i>Perfil
                     </a>
                     <div class="dropdown-divider"></div>
@@ -202,13 +203,14 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     @if(!empty(Config::get('blog.name')))
+                        <li class="nav-header">BLOG</li>
                         <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
                         <li class="nav-item {{ request()->routeIs('posts.*') ? 'menu-is-opening menu-open' : '' }}">
                             <a href="#" class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>
-                                    Entradas
+                                    Publicaciones
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
@@ -230,27 +232,46 @@
                             </ul>
                         </li>
                     @endif
-                    <li class="nav-item">
-                        <a href="../widgets.html" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                Widgets
-                                <span class="right badge badge-danger">New</span>
-                            </p>
-                        </a>
-                    </li>
 
-                    <li class="nav-header">EXAMPLES</li>
-                    <li class="nav-item">
-                        <a href="../calendar.html" class="nav-link">
-                            <i class="nav-icon far fa-calendar-alt"></i>
+                    @if(!empty(Config::get('booking.name')))
+                            <li class="nav-header">RESERVACIONES</li>
+                    <!-- Add icons to the links using the .nav-icon class
+                     with font-awesome or any other icon font library -->
+                    <li class="nav-item {{ request()->routeIs('booking.*') ? 'menu-is-opening menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('booking.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-edit"></i>
                             <p>
-                                Calendar
-                                <span class="badge badge-info right">2</span>
+                                Reservaciones
+                                <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
+                        <ul class="nav nav-treeview treeview-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('booking.calendar') }}"
+                                   class="nav-link {{ request()->routeIs('booking.calendar') ? 'active' : '' }}">
+                                    <i class="fas fa-list nav-icon"></i>
+                                    <p>Calendario</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('booking.index') }}"
+                                   class="nav-link {{ request()->routeIs('booking.index') ? 'active' : '' }}">
+                                    <i class="fas fa-list nav-icon"></i>
+                                    <p>Listado</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('booking.create') }}"
+                                   class="nav-link {{ request()->routeIs('booking.create') ? 'active' : '' }}">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Nueva</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-header">MULTI LEVEL EXAMPLE</li>
+                    @endif
+
+                    {{--<li class="nav-header">MULTI LEVEL EXAMPLE</li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-circle nav-icon"></i>
@@ -308,7 +329,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li>--}}
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->
@@ -369,10 +390,9 @@
                                 {{ Session::get('message') }}
                             </div>
                         @endif
-
-                        @yield('content')
                     </div>
                 </div>
+                @yield('content')
             </div>
 
         </section>
@@ -382,9 +402,10 @@
 
     <footer class="main-footer">
         <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.2.0
+            <b>Version</b> 0.0.1
         </div>
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; {{ now()->year }}
+            <a href="#">{{ config('app.name') }}</a>.</strong> All rights reserved.
     </footer>
 
     <!-- Control Sidebar -->
@@ -399,10 +420,12 @@
 <script src="/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- jQuery UI -->
+<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-{{--<script src="/dist/js/demo.js"></script>--}}
+<script src="/plugins/moment/moment.min.js"></script>
+<script src="/plugins/fullcalendar/main.js"></script>
 
 @livewireScripts
 

@@ -2,7 +2,7 @@
 
 namespace Modules\Post\Http\Livewire\Post;
 
-use App\Models\Post;
+use Modules\Post\Entities\Post;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -25,7 +25,5 @@ class PostsList extends Component
 
         // Actualiza la vista para que se elimine visualmente
         $this->render();
-
-
     }
 }

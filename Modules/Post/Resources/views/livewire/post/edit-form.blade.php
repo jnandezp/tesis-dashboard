@@ -1,6 +1,6 @@
 <div>
     <div>
-        <form method="POST" wire:submit.prevent="create">
+        <form method="POST" wire:submit.prevent="edit">
             <div class="card-header">
                 <h3 class="card-title">Nueva Entrada</h3>
             </div>
@@ -20,28 +20,28 @@
                 </span>
                     @enderror
                 </div>
-                <div class="form-group">
+                <div class="form-group"  wire:ignore>
                     <label for="post-content">Contenido</label>
                     <div wire:ignore>
-                <textarea class="form-control" id="post-content" wire:model="content" name="content"
-                          placeholder="Enter a lorem">
-                    {{ old('content') }}
-                </textarea>
+                        <textarea class="form-control" id="post-content"  wire:ignore wire:model.lazy="content" name="content"  wire:key="editor-{{ now() }}"
+                                  placeholder="Enter a lorem">
+                            {!! $content !!}
+                        </textarea>
                     </div>
                     @error('content')
-                    <span id="post-content-error" class="error invalid-feedback" style="display: inline;">
-                    {{ $message }}
-                </span>
+                        <span id="post-content-error" class="error invalid-feedback" style="display: inline;">
+                            {{ $message }}
+                        </span>
                     @enderror
                 </div>
 
                 <div>
-                    @if($cover)
+                    @if($newCover || $cover)
                         <div class="form-group">
                             <label for="post-preview">Preview</label>
                             <div class="input-group">
                                 <div>
-                                    <img src="{{ $cover->temporaryUrl() }}" alt="" class="img-fluid img-thumbnail">
+                                    <img src="{{ (!empty($newCover)) ? $newCover->temporaryUrl() : $cover }}" alt="" class="img-fluid img-thumbnail">
                                 </div>
                             </div>
                         </div>
@@ -49,23 +49,23 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="post-cover">Portada</label>
+                    <label for="post-newCover">Portada</label>
                     <div class="input-group">
-                        <input type="file" class="form-control" id="post-cover"
-                               wire:model="cover"
+                        <input type="file" class="form-control" id="post-newCover"
+                               wire:model="newCover"
                                wire:click="inputClear('cover')"
                                name="cover"
                                accept="image/*">
                     </div>
-                    <div wire:loading wire:target="cover">
+                    <div wire:loading wire:target="newCover">
                         <div>
                             <p>
                                 Uploading...
                             </p>
                         </div>
                     </div>
-                    @error('cover')
-                    <span id="post-cover-error" class="error invalid-feedback" style="display: inline;">
+                    @error('newCover')
+                    <span id="post-newCover-error" class="error invalid-feedback" style="display: inline;">
                     {{ $message }}
                 </span>
                     @enderror
@@ -87,7 +87,7 @@
     <script>
 
         class MyUploadAdapter {
-            constructor( loader ) {
+            constructor(loader) {
                 // The file loader instance to use during the upload.
                 this.loader = loader;
             }
@@ -95,16 +95,16 @@
             // Starts the upload process.
             upload() {
                 return this.loader.file
-                    .then( file => new Promise( ( resolve, reject ) => {
+                    .then(file => new Promise((resolve, reject) => {
                         this._initRequest();
-                        this._initListeners( resolve, reject, file );
-                        this._sendRequest( file );
-                    } ) );
+                        this._initListeners(resolve, reject, file);
+                        this._sendRequest(file);
+                    }));
             }
 
             // Aborts the upload process.
             abort() {
-                if ( this.xhr ) {
+                if (this.xhr) {
                     this.xhr.abort();
                 }
             }
@@ -118,20 +118,20 @@
                 // a POST request with JSON as a data structure but your configuration
                 // could be different.
                 console.log('{{ route('posts.image.upload') }}');
-                xhr.open( 'POST', '{{ route('posts.image.upload') }}', true );
+                xhr.open('POST', '{{ route('posts.image.upload') }}', true);
                 xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}');
                 xhr.responseType = 'json';
             }
 
             // Initializes XMLHttpRequest listeners.
-            _initListeners( resolve, reject, file ) {
+            _initListeners(resolve, reject, file) {
                 const xhr = this.xhr;
                 const loader = this.loader;
-                const genericErrorText = `Couldn't upload file: ${ file.name }.`;
+                const genericErrorText = `Couldn't upload file: ${file.name}.`;
 
-                xhr.addEventListener( 'error', () => reject( genericErrorText ) );
-                xhr.addEventListener( 'abort', () => reject() );
-                xhr.addEventListener( 'load', () => {
+                xhr.addEventListener('error', () => reject(genericErrorText));
+                xhr.addEventListener('abort', () => reject());
+                xhr.addEventListener('load', () => {
                     const response = xhr.response;
 
                     // This example assumes the XHR server's "response" object will come with
@@ -140,38 +140,38 @@
                     //
                     // Your integration may handle upload errors in a different way so make sure
                     // it is done properly. The reject() function must be called when the upload fails.
-                    if ( !response || response.error ) {
-                        return reject( response && response.error ? response.error.message : genericErrorText );
+                    if (!response || response.error) {
+                        return reject(response && response.error ? response.error.message : genericErrorText);
                     }
 
                     // If the upload is successful, resolve the upload promise with an object containing
                     // at least the "default" URL, pointing to the image on the server.
                     // This URL will be used to display the image in the content. Learn more in the
                     // UploadAdapter#upload documentation.
-                    resolve( {
+                    resolve({
                         default: response.url
-                    } );
-                } );
+                    });
+                });
 
                 // Upload progress when it is supported. The file loader has the #uploadTotal and #uploaded
                 // properties which are used e.g. to display the upload progress bar in the editor
                 // user interface.
-                if ( xhr.upload ) {
-                    xhr.upload.addEventListener( 'progress', evt => {
-                        if ( evt.lengthComputable ) {
+                if (xhr.upload) {
+                    xhr.upload.addEventListener('progress', evt => {
+                        if (evt.lengthComputable) {
                             loader.uploadTotal = evt.total;
                             loader.uploaded = evt.loaded;
                         }
-                    } );
+                    });
                 }
             }
 
             // Prepares the data and sends the request.
-            _sendRequest( file ) {
+            _sendRequest(file) {
                 // Prepare the form data.
                 const data = new FormData();
 
-                data.append( 'upload', file );
+                data.append('upload', file);
 
                 // Important note: This is the right place to implement security mechanisms
                 // like authentication and CSRF protection. For instance, you can use
@@ -179,14 +179,14 @@
                 // the CSRF token generated earlier by your application.
 
                 // Send the request.
-                this.xhr.send( data );
+                this.xhr.send(data);
             }
         }
 
-        function myCustomUploadAdapterPlugin( editor ) {
-            editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
+        function myCustomUploadAdapterPlugin(editor) {
+            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
                 // Configure the URL to the upload script in your back-end here!
-                return new MyUploadAdapter( loader );
+                return new MyUploadAdapter(loader);
             };
         }
 
@@ -194,7 +194,7 @@
         // Visit https://ckeditor.com/docs/ckeditor5/latest/features/index.html to browse all the features.
         CKEDITOR.ClassicEditor.create(document.getElementById("post-content"), {
             minHeight: '300px',
-            extraPlugins: [ myCustomUploadAdapterPlugin],
+            extraPlugins: [myCustomUploadAdapterPlugin],
             // https://ckeditor.com/docs/ckeditor5/latest/features/toolbar/toolbar.html#extended-toolbar-configuration-format
             toolbar: {
                 items: [
@@ -324,15 +324,6 @@
                 editor.model.document.on('change:data', function () {
                     @this.set('content', editor.getData());
                 })
-                editor.on('paste',function (e) {
-                    console.log('PASTE');
-                    var html = e.data.dataValue;
-                    if (!html) {
-                        return;
-                    }
-
-                    e.data.dataValue = replaceImgText(html);
-                });
             })
             .catch(error => {
                 console.error(error);

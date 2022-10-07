@@ -1,5 +1,6 @@
 {
     "Blog": true,
     "User": true,
-    "Post": true
+    "Post": true,
+    "Booking": true
 }

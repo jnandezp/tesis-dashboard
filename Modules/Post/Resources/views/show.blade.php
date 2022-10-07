@@ -10,18 +10,22 @@
 @endsection
 
 @section('content')
-    <!-- Default box -->
-    <div class="card">
-        <div class="card-body">
-            <img src="{{ asset('storage/'.$post->thumbnail) }}" class="img-fluid"/>
-            <h1>{{$post->title}}</h1>
-            <div id="editor">
-                {!! $post->content !!}
+    <div class="row">
+        <!-- left column -->
+        <div class="col-md-6">
+            <!-- Default box -->
+            <div class="card">
+                <div class="card-body">
+                    <img src="{{ asset('storage/'.$post->thumbnail) }}" class="img-fluid"/>
+                    <h1>{{$post->title}}</h1>
+                    <div id="editor">
+                        {!! $post->content !!}
+                    </div>
+                </div>
+                <!-- /.card-body -->
             </div>
         </div>
-        <!-- /.card-body -->
     </div>
-
     <!-- /.card -->
 @endsection
 

@@ -2,7 +2,7 @@
 
 namespace Modules\Post\Http\Livewire\Post;
 
-use App\Models\Post;
+use Modules\Post\Entities\Post;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Image;

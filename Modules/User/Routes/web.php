@@ -14,3 +14,13 @@
 Route::prefix('user')->group(function() {
     Route::get('/', 'UserController@index');
 });
+use Modules\User\Http\Controllers\UserController;
+
+/*Route::prefix('booking')->group(function() {
+    Route::get('/', 'BookingController@index');
+});*/
+
+Route::group(['prefix' => 'user', 'as' => 'user.','middleware'=>'is.admin'], function() {
+    Route::get('/profile', [UserController::class, 'index'])->name('profile');
+
+});

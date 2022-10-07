@@ -1,13 +1,12 @@
 <?php
 
-namespace Modules\User\Http\Controllers;
+namespace Modules\Warehouse\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Auth;
 
-class UserController extends Controller
+class WarehouseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-
-        return view('user::index', compact('user'));
+        return view('warehouse::index');
     }
 
     /**
@@ -26,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user::create');
+        return view('warehouse::create');
     }
 
     /**
@@ -46,7 +43,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user::show');
+        return view('warehouse::show');
     }
 
     /**
@@ -56,7 +53,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('user::edit');
+        return view('warehouse::edit');
     }
 
     /**

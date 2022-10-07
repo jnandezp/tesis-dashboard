@@ -1,13 +1,12 @@
 <?php
 
-namespace Modules\User\Http\Controllers;
+namespace Modules\Sale\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Auth;
 
-class UserController extends Controller
+class SaleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-
-        return view('user::index', compact('user'));
+        return view('sale::index');
     }
 
     /**
@@ -26,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user::create');
+        return view('sale::create');
     }
 
     /**
@@ -46,7 +43,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user::show');
+        return view('sale::show');
     }
 
     /**
@@ -56,7 +53,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('user::edit');
+        return view('sale::edit');
     }
 
     /**

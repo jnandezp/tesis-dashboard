@@ -16,7 +16,7 @@
             <!-- Default box -->
             <div class="card">
                 <div class="card-body">
-                    PERFIL
+                    PERFIL {{ $user->fullName }}
                 </div>
                 <!-- /.card-body -->
             </div>

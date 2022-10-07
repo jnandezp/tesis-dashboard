@@ -1,13 +1,12 @@
 <?php
 
-namespace Modules\User\Http\Controllers;
+namespace Modules\Library\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Auth;
 
-class UserController extends Controller
+class LibraryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-
-        return view('user::index', compact('user'));
+        return view('library::index');
     }
 
     /**
@@ -26,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user::create');
+        return view('library::create');
     }
 
     /**
@@ -46,7 +43,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('user::show');
+        return view('library::show');
     }
 
     /**
@@ -56,7 +53,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('user::edit');
+        return view('library::edit');
     }
 
     /**

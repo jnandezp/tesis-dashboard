@@ -2,5 +2,10 @@
     "Blog": true,
     "User": true,
     "Post": true,
-    "Booking": true
+    "Booking": true,
+    "Warehouse": true,
+    "Inventory": true,
+    "Library": true,
+    "Sale": true,
+    "Customer": true
 }

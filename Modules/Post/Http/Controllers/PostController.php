@@ -9,8 +9,15 @@ use Illuminate\Support\Facades\Storage;
 use Image;
 use Modules\Post\Entities\Post;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
+
+
 class PostController extends Controller
 {
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function imageUpload(Request $request){
         $image = $request->file('upload');
@@ -99,6 +106,8 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
+
         return view('post::edit', compact('post'));
     }
 

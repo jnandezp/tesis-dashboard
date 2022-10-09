@@ -14,7 +14,7 @@
 use Modules\Post\Http\Controllers\PostController;
 
 Route::group(['prefix' => 'posts', 'as' => 'posts.','middleware'=>'is.admin'], function() {
-    Route::get('/', 'PostController@index')->name('index');
+    Route::get('/',  [PostController::class, 'index'])->name('index');
     Route::get('/create', [PostController::class, 'create'])->name('create');
     Route::post('/store', [PostController::class, 'store'])->name('store');
     Route::get('/show/{post}', [PostController::class, 'show'])->name('show');

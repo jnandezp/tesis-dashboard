@@ -26,7 +26,7 @@ class PostFactory extends Factory
         return [
             'cover' => 'https://placekitten.com/1920/1080',
             'thumbnail' => 'https://placekitten.com/192/108',
-            'created_by' => $user,
+            'user_id' => $user,
             'title' => fake()->realText(fake()->numberBetween(10, 20)),
             'content' => fake()->realText(fake()->numberBetween(20, 40)),
         ];

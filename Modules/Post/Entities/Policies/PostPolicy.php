@@ -21,7 +21,7 @@ class PostPolicy
     }
 
     public function update(\App\Models\User $user, Post $post){
-        return $user->id === $post->created_by;
+        return $user->id === $post->user_id;
     }
 
 }

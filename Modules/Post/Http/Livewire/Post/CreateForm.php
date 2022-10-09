@@ -36,7 +36,7 @@ class CreateForm extends Component
         $post = new Post($params);
 
         // Asignamos quien esta creandolo
-        $post->created_by = auth()->user()->id;
+        $post->user_id = auth()->user()->id;
 
         //Guarmaos la publicacion
         $status = $post->save();

@@ -13,14 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('title');
-            $table->longText('content');
-            $table->text('cover')->nullable();
-            $table->text('thumbnail')->nullable();
-            $table->enum('publication',['draft','private','public'])->default('draft');
+            $table->string('name')->unique();
+            $table->string('name-slug')->unique();
+            $table->text('description');
+            $table->string('rfc',20)->nullable()->default('XAXX010101000');
+            $table->text('address')->nullable();
+            $table->string('phone', 20)->nullable();
+            $table->string('web')->nullable();
+            $table->string('email')->unique();
+            $table->text('logo')->nullable();
+            $table->string('slogan')->nullable();
+
+
             $table->timestamps();
             $table->softDeletes();
 
@@ -35,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('companies');
     }
 };

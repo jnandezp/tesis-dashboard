@@ -40,7 +40,7 @@ class Post extends Model implements HasMedia
 
     public function writer()
     {
-        return $this->belongsTo(User::class, 'created_by');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     protected static function newFactory()

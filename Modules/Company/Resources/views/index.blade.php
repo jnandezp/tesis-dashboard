@@ -1,9 +1,48 @@
-@extends('company::layouts.master')
+@extends('layouts.app')
+
+@section('title')
+    Compañias
+@endsection
+
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active">Blank Page</li>
+@endsection
 
 @section('content')
-    <h1>Hello World</h1>
+    <div class="row">
+        <!-- /.col -->
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Compañias</h3>
 
-    <p>
-        This view is loaded from module: {!! config('company.name') !!}
-    </p>
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" placeholder="Search Mail">
+                            <div class="input-group-append">
+                                <div class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-tools -->
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body p-0">
+                    <livewire:company::company.company-list />
+                </div>
+                <!-- /.card-body -->
+                {{--<div class="card-footer"></div>--}}
+            </div>
+            <!-- /.card -->
+        </div>
+        <!-- /.col -->
+    </div>
+    <!-- /.row -->
+@endsection
+
+@section('script')
+
 @endsection

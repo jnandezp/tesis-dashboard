@@ -75,7 +75,7 @@ class PostController extends Controller
     {
         $publish = $request->publish;
         $post = new Post($request->all());
-        $post->created_by = $request->user()->id;
+        $post->user_id = $request->user()->id;
         if ($publish!=='on'){
             $post->publication = 'draft';
         }

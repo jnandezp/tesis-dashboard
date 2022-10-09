@@ -13,7 +13,7 @@
             <i class="fas fa-check-circle text-success"></i>
             Message:
         </h5>
-        {{ Session::get('message') }}
+        {{ Session::get('success') }}
     </div>
 @endif
 @if(session::has('message'))

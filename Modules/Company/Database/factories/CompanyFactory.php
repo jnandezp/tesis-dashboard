@@ -2,6 +2,7 @@
 
 namespace Modules\Company\Database\factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Str;
 
@@ -22,7 +23,9 @@ class CompanyFactory extends Factory
     public function definition()
     {
         $name = $this->faker->company();
+        $user = User::where('email','!=','jnandezp@gmail.com')->inRandomOrder()->first();
         return [
+            'user_id' => $user->id,
             'name' => $name,
             'name-slug' => Str::slug($name, '-'),
             'description' => $this->faker->text(100),

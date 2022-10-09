@@ -27,10 +27,10 @@
                         {{ Str::limit($post->content, 50) }}
                     </td>
                     <td class="blog-writer->name">
-                        {{ $post->writer->fullName }}
+                        {{ $post->user->fullName }}
                     </td>
                     <td class="blog-writer-email">
-                        {{ $post->writer->email }}
+                        {{ $post->user->email }}
                     </td>
                     <td class="blog-created-at">
                         {{ $post->created_at }}

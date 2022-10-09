@@ -2,6 +2,7 @@
 
 namespace Modules\Company\Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Company\Entities\Company;
@@ -18,7 +19,10 @@ class CompanySeeder extends Seeder
     {
         Model::unguard();
 
+        $user = User::where('email','=','jnandezp@gmail.com')->first();
+
         $company = Company::create([
+            'user_id' => $user->id,
             'name' => 'NightCoders',
             'name-slug' => Str::slug('NightCoders', '-'),
             'description' => 'NightCoders Studio',

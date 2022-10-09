@@ -42,3 +42,7 @@
     </div>
     <!-- /.row -->
 @endsection
+
+@section('script')
+
+@endsection

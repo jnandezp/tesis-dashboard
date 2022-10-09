@@ -47,7 +47,10 @@
                                 <i class="fas fa-trash-restore"></i>
                             </button>
                         @else
-                            <button class="btn btn-sm btn-danger" wire:click="deletePost({{$post->id}})">
+                            <button class="btn btn-sm btn-danger"
+                                    wire:click="$emit('showModalDeletePost', {{ $post->id }})"
+                                    {{--wire:click="deletePost({{$post->id}})"--}}
+                            >
                                 <i class="fas fa-trash"></i>
                             </button>
                         @endif
@@ -74,3 +77,7 @@
         </a>
     </div>
 </div>
+
+@push('script')
+    @include('post::livewire.post._script_livewire_delete_post')
+@endpush

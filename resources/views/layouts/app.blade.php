@@ -28,6 +28,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+    @stack('css')
     @yield('css')
 </head>
 <body class="hold-transition sidebar-mini">
@@ -234,41 +235,41 @@
                     @endif
 
                     @if(!empty(Config::get('booking.name')))
-                            <li class="nav-header">RESERVACIONES</li>
-                    <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-                    <li class="nav-item {{ request()->routeIs('booking.*') ? 'menu-is-opening menu-open' : '' }}">
-                        <a href="#" class="nav-link {{ request()->routeIs('booking.*') ? 'active' : '' }}">
-                            <i class="nav-icon fas fa-edit"></i>
-                            <p>
-                                Reservaciones
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview treeview-menu">
-                            <li class="nav-item">
-                                <a href="{{ route('booking.calendar') }}"
-                                   class="nav-link {{ request()->routeIs('booking.calendar') ? 'active' : '' }}">
-                                    <i class="fas fa-list nav-icon"></i>
-                                    <p>Calendario</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('booking.index') }}"
-                                   class="nav-link {{ request()->routeIs('booking.index') ? 'active' : '' }}">
-                                    <i class="fas fa-list nav-icon"></i>
-                                    <p>Listado</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('booking.create') }}"
-                                   class="nav-link {{ request()->routeIs('booking.create') ? 'active' : '' }}">
-                                    <i class="fas fa-plus nav-icon"></i>
-                                    <p>Nueva</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                        <li class="nav-header">RESERVACIONES</li>
+                        <!-- Add icons to the links using the .nav-icon class
+                         with font-awesome or any other icon font library -->
+                        <li class="nav-item {{ request()->routeIs('booking.*') ? 'menu-is-opening menu-open' : '' }}">
+                            <a href="#" class="nav-link {{ request()->routeIs('booking.*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Reservaciones
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview treeview-menu">
+                                <li class="nav-item">
+                                    <a href="{{ route('booking.calendar') }}"
+                                       class="nav-link {{ request()->routeIs('booking.calendar') ? 'active' : '' }}">
+                                        <i class="fas fa-list nav-icon"></i>
+                                        <p>Calendario</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('booking.index') }}"
+                                       class="nav-link {{ request()->routeIs('booking.index') ? 'active' : '' }}">
+                                        <i class="fas fa-list nav-icon"></i>
+                                        <p>Listado</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('booking.create') }}"
+                                       class="nav-link {{ request()->routeIs('booking.create') ? 'active' : '' }}">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>Nueva</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
                     @endif
 
                     {{--<li class="nav-header">MULTI LEVEL EXAMPLE</li>
@@ -363,33 +364,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-                        @if(Session::has('error'))
-                            <div class="callout callout-danger">
-                                <h5>
-                                    <i class="fas fa-exclamation-circle text-danger"></i>
-                                    Message:
-                                </h5>
-                                {{ Session::get('message') }}
-                            </div>
-                        @endif
-                        @if(Session::has('success'))
-                            <div class="callout callout-success">
-                                <h5>
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    Message:
-                                </h5>
-                                {{ Session::get('message') }}
-                            </div>
-                        @endif
-                        @if(session::has('message'))
-                            <div class="callout callout-info">
-                                <h5>
-                                    <i class="fas fa-info"></i>
-                                    Message:
-                                </h5>
-                                {{ Session::get('message') }}
-                            </div>
-                        @endif
+                        @include('layouts._section_flash_message')
                     </div>
                 </div>
                 @yield('content')
@@ -416,6 +391,10 @@
 </div>
 <!-- ./wrapper -->
 
+<livewire:post::shared.show-modal-message/>
+
+@livewireScripts
+
 <!-- jQuery -->
 <script src="/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -427,8 +406,9 @@
 <script src="/plugins/moment/moment.min.js"></script>
 <script src="/plugins/fullcalendar/main.js"></script>
 
-@livewireScripts
-
+@stack('script')
 @yield('script')
+
+@include('layouts._section_flash_message_swal')
 </body>
 </html>

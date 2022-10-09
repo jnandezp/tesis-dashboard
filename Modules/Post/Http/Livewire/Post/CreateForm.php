@@ -53,7 +53,7 @@ class CreateForm extends Component
                 'thumbnail' => $pathThumbnail,
             ]);
 
-            return redirect()->route('posts.show', $post)->with('message','ALL OK SAVE');
+            return redirect()->route('posts.show', $post)->with('success','ALL OK SAVE');
         }
     }
 

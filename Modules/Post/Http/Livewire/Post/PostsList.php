@@ -10,8 +10,19 @@ class PostsList extends Component
 {
     use WithPagination;
 
+    /**
+     * @var string
+     */
     protected $paginationTheme = 'bootstrap';
 
+    /**
+     * @var string[]
+     */
+    protected $listeners = ['deletePost'];
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function render()
     {
         $posts = Post::orderByDesc('id')->paginate(10)->withQueryString();
@@ -19,11 +30,15 @@ class PostsList extends Component
         return view('post::livewire.post.posts-list',['posts' => $posts]);
     }
 
-    public function deletePost($postId){
-        $post = Post::find($postId);
+    /**
+     * Delete post
+     * @param Post $post
+     * @return void
+     */
+    public function deletePost(Post $post){
         $post->delete();
 
-        // Actualiza la vista para que se elimine visualmente
-        $this->render();
+        // Emitir evento success
+        $this->emit('showDeleteSuccess', 'success');
     }
 }

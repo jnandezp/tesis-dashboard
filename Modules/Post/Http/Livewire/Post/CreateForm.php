@@ -28,7 +28,8 @@ class CreateForm extends Component
         ]);
     }
 
-    public function create(){
+    public function create()
+    {
         // Validamos los campos
         $params = $this->validate($this->rules);
         // Inicializamos el modelo con la informacion de los campos recibidos
@@ -39,13 +40,13 @@ class CreateForm extends Component
 
         //Guarmaos la publicacion
         $status = $post->save();
-        if($status){
+        if ($status) {
             // Store the uploaded file in the "posts" directory of the default filesystem disk.
-            $pathCover = $this->cover->store('posts/'.$post->id.'/cover', 'public');
+            $pathCover = $this->cover->store('posts/' . $post->id . '/cover', 'public');
 
             // generamos una copia del archivo y modificamos su tamaño
-            $pathThumbnail = $this->cover->store('posts/'.$post->id.'/thumbnail', 'public');
-            $image = $this->createThumbnail(storage_path('app/public/').$pathThumbnail, null, Post::THUMBNAIL_SIZE_HEIGHT);
+            $pathThumbnail = $this->cover->store('posts/' . $post->id . '/thumbnail', 'public');
+            $image = $this->createThumbnail(storage_path('app/public/') . $pathThumbnail, null, Post::THUMBNAIL_SIZE_HEIGHT);
 
             // Update
             $post->update([
@@ -53,11 +54,11 @@ class CreateForm extends Component
                 'thumbnail' => $pathThumbnail,
             ]);
 
-            return redirect()->route('posts.show', $post)->with('success','ALL OK SAVE');
+            return redirect()->route('posts.show', $post)->with('success', 'ALL OK SAVE');
         }
     }
 
-    public function createThumbnail($pathThumbnail, $width=null, $height=200)
+    public function createThumbnail($pathThumbnail, $width = null, $height = 200)
     {
         $img = Image::make($pathThumbnail)->resize($width, $height, function ($constraint) {
             $constraint->aspectRatio();

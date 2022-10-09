@@ -49,7 +49,7 @@
                         @else
                             <button class="btn btn-sm btn-danger"
                                     wire:click="$emit('showModalDeletePost', {{ $post->id }})"
-                                    {{--wire:click="deletePost({{$post->id}})"--}}
+                                {{--wire:click="deletePost({{$post->id}})"--}}
                             >
                                 <i class="fas fa-trash"></i>
                             </button>

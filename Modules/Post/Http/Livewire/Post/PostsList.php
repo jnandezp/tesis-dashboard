@@ -27,7 +27,7 @@ class PostsList extends Component
     {
         $posts = Post::orderByDesc('id')->paginate(10)->withQueryString();
 
-        return view('post::livewire.post.posts-list',['posts' => $posts]);
+        return view('post::livewire.post.posts-list', ['posts' => $posts]);
     }
 
     /**
@@ -35,7 +35,8 @@ class PostsList extends Component
      * @param Post $post
      * @return void
      */
-    public function deletePost(Post $post){
+    public function deletePost(Post $post)
+    {
         $post->delete();
 
         // Emitir evento success

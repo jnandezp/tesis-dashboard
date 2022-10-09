@@ -20,16 +20,17 @@
                 </span>
                     @enderror
                 </div>
-                <div class="form-group"  wire:ignore>
+                <div class="form-group" wire:ignore>
                     <label for="post-content">Contenido</label>
                     <div wire:ignore>
-                        <textarea class="form-control" id="post-content"  wire:ignore wire:model.lazy="content" name="content"  wire:key="editor-{{ now() }}"
+                        <textarea class="form-control" id="post-content" wire:ignore wire:model.lazy="content"
+                                  name="content" wire:key="editor-{{ now() }}"
                                   placeholder="Enter a lorem">
                             {!! $content !!}
                         </textarea>
                     </div>
                     @error('content')
-                        <span id="post-content-error" class="error invalid-feedback" style="display: inline;">
+                    <span id="post-content-error" class="error invalid-feedback" style="display: inline;">
                             {{ $message }}
                         </span>
                     @enderror
@@ -41,7 +42,8 @@
                             <label for="post-preview">Preview</label>
                             <div class="input-group">
                                 <div>
-                                    <img src="{{ (!empty($newCover)) ? $newCover->temporaryUrl() : $cover }}" alt="" class="img-fluid img-thumbnail">
+                                    <img src="{{ (!empty($newCover)) ? $newCover->temporaryUrl() : $cover }}" alt=""
+                                         class="img-fluid img-thumbnail">
                                 </div>
                             </div>
                         </div>

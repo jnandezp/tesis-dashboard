@@ -30,19 +30,20 @@ class EditForm extends Component
         ]);
     }
 
-    public function edit(){
+    public function edit()
+    {
         // Validamos los campos
         $params = $this->validate($this->rules);
         // Inicializamos el modelo con la informacion de los campos recibidos
         $post = Post::where([
-            ['id','=',$this->postId],
+            ['id', '=', $this->postId],
         ])->first();
         $post->title = $this->title;
         $post->content = $this->content;
 
         //Guarmaos la publicacion
         $status = $post->save();
-        if($status){
+        if ($status) {
             if (!empty($this->newCover)) {
                 // Store the uploaded file in the "posts" directory of the default filesystem disk.
                 $pathCover = $this->newCover->store('posts/' . $post->id . '/cover', 'public');
@@ -58,11 +59,11 @@ class EditForm extends Component
                 ]);
             }
 
-            return redirect()->route('posts.show', $post)->with('success','ALL OK SAVE');
+            return redirect()->route('posts.show', $post)->with('success', 'ALL OK SAVE');
         }
     }
 
-    public function createThumbnail($pathThumbnail, $width=null, $height=200)
+    public function createThumbnail($pathThumbnail, $width = null, $height = 200)
     {
         $img = Image::make($pathThumbnail)->resize($width, $height, function ($constraint) {
             $constraint->aspectRatio();
@@ -75,11 +76,12 @@ class EditForm extends Component
         $this->$inputId = "";
     }
 
-    public function mount(Post $post){
+    public function mount(Post $post)
+    {
         $this->postId = $post->id;
         $this->title = $post->title;
         $this->content = $post->content;
-        $this->cover = asset('storage/'.$post->cover);
+        $this->cover = asset('storage/' . $post->cover);
     }
 
     public function render()

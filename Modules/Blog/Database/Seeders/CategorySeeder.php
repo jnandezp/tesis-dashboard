@@ -16,6 +16,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $category = Category::create([
+            'id' => 1,
+            'name' => 'General',
+        ]);
+
+        $category = Category::create([
             'name' => 'Laravel',
         ]);
 

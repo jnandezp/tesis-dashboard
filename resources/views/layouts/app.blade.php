@@ -219,7 +219,7 @@
 </div>
 <!-- ./wrapper -->
 
-<livewire:post::shared.show-modal-message/>
+<livewire:blog::shared.show-modal-message/>
 
 @livewireScripts
 

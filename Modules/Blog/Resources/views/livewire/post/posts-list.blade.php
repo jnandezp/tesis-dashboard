@@ -4,10 +4,12 @@
             <thead>
             <tr>
                 <th>Cover</th>
+                <th>Categoria</th>
                 <th>Title</th>
                 <th>Content</th>
                 <th>Writer</th>
                 <th>Email</th>
+                <th>Etiqueta</th>
                 <th>Created At</th>
                 <th>Actions</th>
             </tr>
@@ -17,6 +19,9 @@
                 <tr>
                     <td class="blog-cover">
                         <img src="{{ asset('storage/'.$post->thumbnail) }}" class="img-size-64"/>
+                    </td>
+                    <td class="blog-category">
+                        {{ $post->category->name }}
                     </td>
                     <td class="blog-title">
                         <a href="{{ route('posts.show', $post) }}">
@@ -31,6 +36,9 @@
                     </td>
                     <td class="blog-writer-email">
                         {{ $post->user->email }}
+                    </td>
+                    <td class="blog-tag">
+                        {{ !empty($post->tag) ? $post->tag->name : '' }}
                     </td>
                     <td class="blog-created-at">
                         {{ $post->created_at }}

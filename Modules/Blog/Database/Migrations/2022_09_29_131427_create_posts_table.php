@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('tag_id')->nullable();
             $table->string('title');
             $table->longText('content');
             $table->text('cover')->nullable();
@@ -25,6 +27,8 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('categories');
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 

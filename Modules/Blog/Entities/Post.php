@@ -43,6 +43,11 @@ class Post extends Model implements HasMedia
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function category()
+    {
+        return $this->belongsTo(Category::class, 'category_id');
+    }
+
     protected static function newFactory()
     {
         return \Modules\Blog\Database\factories\PostFactory::new();

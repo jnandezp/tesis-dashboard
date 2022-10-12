@@ -15,6 +15,8 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        Post::factory(20)->create();
+        if (config('app.debug') == 'local'){
+            Post::factory(20)->create();
+        }
     }
 }

@@ -20,6 +20,23 @@
                 </span>
                     @enderror
                 </div>
+
+                <div class="form-group">
+                    <label for="post-category">Categoria</label>
+                    <select class="form-control select2 @error('category') is-invalid @enderror" id="post-category" style="width: 100%;"
+                            wire:model="category" name="category">
+                        <option selected="selected" value="">Selecciona una categoria</option>
+                        @foreach($categories as $categoryId => $categoryName)
+                            <option value="{{ $categoryId }}">{{ $categoryName }}</option>
+                        @endforeach
+                    </select>
+                    @error('category')
+                    <span id="post-category-error" class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
                 <div class="form-group" wire:ignore>
                     <label for="post-content">Contenido</label>
                     <div wire:ignore>

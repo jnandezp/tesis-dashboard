@@ -10,9 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Modules\Blog\Http\Controllers\BlogController;
 use Modules\Blog\Http\Controllers\PostController;
 use Modules\Blog\Http\Controllers\CategoryController;
 use Modules\Blog\Http\Controllers\TagController;
+
+Route::group(['prefix' => '', 'as' => 'blog.','middleware'=>'is.admin'], function() {
+    Route::get('/',  [BlogController::class, 'index'])->name('index');
+});
+
 
 Route::group(['prefix' => 'posts', 'as' => 'posts.','middleware'=>'is.admin'], function() {
     Route::get('/',  [PostController::class, 'index'])->name('index');
@@ -27,8 +33,6 @@ Route::group(['prefix' => 'posts', 'as' => 'posts.','middleware'=>'is.admin'], f
     Route::group(['prefix' => 'image', 'as' => 'image.','middleware'=>'is.admin'], function() {
         Route::post('/upload', [PostController::class, 'imageUpload'])->name('upload');
     });
-
-
 });
 
 Route::group(['prefix' => 'categories', 'as' => 'categories.','middleware'=>'is.admin'], function() {

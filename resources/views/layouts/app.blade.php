@@ -21,7 +21,8 @@
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
 
     {{--<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>--}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>
+    {{--<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>--}}
+    <script src="/plugins/ckeditor/ckeditor.js"></script>
 
     @livewireStyles
 

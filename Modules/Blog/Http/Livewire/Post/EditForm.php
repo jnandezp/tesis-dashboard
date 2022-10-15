@@ -2,6 +2,7 @@
 
 namespace Modules\Blog\Http\Livewire\Post;
 
+use Modules\Blog\Entities\Category;
 use Modules\Blog\Entities\Post;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -16,9 +17,12 @@ class EditForm extends Component
     public $content;
     public $cover;
     public $newCover;
+    public $categories;
+    public $category;
 
     protected $rules = [
         'title' => 'required|string|min:10|max:255',
+        'category' => 'required|numeric',
         'content' => 'required|string',
         'newCover' => 'nullable|image|max:2048',
     ];
@@ -40,6 +44,7 @@ class EditForm extends Component
         ])->first();
         $post->title = $this->title;
         $post->content = $this->content;
+        $post->category_id = $this->category;
 
         //Guarmaos la publicacion
         $status = $post->save();
@@ -78,6 +83,8 @@ class EditForm extends Component
 
     public function mount(Post $post)
     {
+        $this->categories = Category::pluck('name','id');
+        $this->category = $post->category_id;
         $this->postId = $post->id;
         $this->title = $post->title;
         $this->content = $post->content;

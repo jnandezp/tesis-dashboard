@@ -13,13 +13,30 @@
                 <div class="form-group">
                     <label for="post-title">Titulo</label>
                     <input type="text" class="form-control @error('title') is-invalid @enderror" id="post-title"
-                           wire:model="title" name="title" placeholder="Enter a title" value="{{ old('title') }}">
+                           wire:model="title" name="title" placeholder="Enter a title">
                     @error('title')
                     <span id="post-title-error" class="error invalid-feedback">
                     {{ $message }}
                 </span>
                     @enderror
                 </div>
+
+                <div class="form-group">
+                    <label for="post-category">Categoria</label>
+                    <select class="form-control select2 @error('category') is-invalid @enderror" id="post-category" style="width: 100%;"
+                            wire:model="category" name="category">
+                        <option selected="selected" value="">Selecciona una categoria</option>
+                        @foreach($categories as $categoryId => $categoryName)
+                            <option value="{{ $categoryId }}">{{ $categoryName }}</option>
+                        @endforeach
+                    </select>
+                    @error('category')
+                    <span id="post-category-error" class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label for="post-content">Contenido</label>
                     <div wire:ignore>
@@ -51,7 +68,7 @@
                 <div class="form-group">
                     <label for="post-cover">Portada</label>
                     <div class="input-group">
-                        <input type="file" class="form-control" id="post-cover"
+                        <input type="file" class="form-control @error('category') is-invalid @enderror" id="post-cover"
                                wire:model="cover"
                                wire:click="inputClear('cover')"
                                name="cover"

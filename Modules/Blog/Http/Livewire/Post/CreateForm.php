@@ -2,6 +2,7 @@
 
 namespace Modules\Blog\Http\Livewire\Post;
 
+use Modules\Blog\Entities\Category;
 use Modules\Blog\Entities\Post;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -14,9 +15,12 @@ class CreateForm extends Component
     public $title;
     public $content;
     public $cover;
+    public $category;
+    public $categories;
 
     protected $rules = [
         'title' => 'required|string|min:10|max:255',
+        'category' => 'required|numeric',
         'content' => 'required|string',
         'cover' => 'required|image|max:2048',
     ];
@@ -34,9 +38,9 @@ class CreateForm extends Component
         $params = $this->validate($this->rules);
         // Inicializamos el modelo con la informacion de los campos recibidos
         $post = new Post($params);
-
         // Asignamos quien esta creandolo
         $post->user_id = auth()->user()->id;
+        $post->category_id = $this->category;
 
         //Guarmaos la publicacion
         $status = $post->save();
@@ -69,6 +73,10 @@ class CreateForm extends Component
     public function inputClear($inputId)
     {
         $this->$inputId = "";
+    }
+
+    public function mount(){
+        $this->categories = Category::pluck('name','id');
     }
 
     public function render()

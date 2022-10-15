@@ -12,9 +12,9 @@
                 @csrf
                 <div class="form-group">
                     <label for="tag-name">Nombre</label>
-                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="tag-name"
+                    <input type="text" class="form-control @error('tag.name') is-invalid @enderror" id="tag-name"
                            wire:model.lazy="tag.name" name="name" placeholder="Enter a name">
-                    @error('name')
+                    @error('tag.name')
                         <span id="tag-name-error" class="error invalid-feedback">
                             {{ $message }}
                         </span>
@@ -22,10 +22,10 @@
                 </div>
                 <div class="form-group">
                     <label for="tag-description">Descripcion</label>
-                    <textarea class="form-control" id="tag-description" wire:model.lazy="tag.description" name="description"
+                    <textarea class="form-control @error('tag.description') is-invalid @enderror" id="tag-description" wire:model.lazy="tag.description" name="description"
                               placeholder="Enter a description">
                     </textarea>
-                    @error('description')
+                    @error('tag.description')
                         <span id="tag-description-error" class="error invalid-feedback" style="display: inline;">
                             {{ $message }}
                         </span>

@@ -11,6 +11,8 @@
 |
 */
 use Modules\Blog\Http\Controllers\PostController;
+use Modules\Blog\Http\Controllers\CategoryController;
+use Modules\Blog\Http\Controllers\TagController;
 
 Route::group(['prefix' => 'posts', 'as' => 'posts.','middleware'=>'is.admin'], function() {
     Route::get('/',  [PostController::class, 'index'])->name('index');
@@ -27,5 +29,19 @@ Route::group(['prefix' => 'posts', 'as' => 'posts.','middleware'=>'is.admin'], f
     });
 
 
+});
+
+Route::group(['prefix' => 'categories', 'as' => 'categories.','middleware'=>'is.admin'], function() {
+    Route::get('/',  [CategoryController::class, 'index'])->name('index');
+    Route::get('/create', [CategoryController::class, 'create'])->name('create');
+    Route::get('/show/{category}', [CategoryController::class, 'show'])->name('show');
+    Route::get('/edit/{category}', [CategoryController::class, 'edit'])->name('edit');
+});
+
+Route::group(['prefix' => 'tags', 'as' => 'tags.','middleware'=>'is.admin'], function() {
+    Route::get('/',  [TagController::class, 'index'])->name('index');
+    Route::get('/create', [TagController::class, 'create'])->name('create');
+    Route::get('/show/{tag}', [TagController::class, 'show'])->name('show');
+    Route::get('/edit/{tag}', [TagController::class, 'edit'])->name('edit');
 });
 

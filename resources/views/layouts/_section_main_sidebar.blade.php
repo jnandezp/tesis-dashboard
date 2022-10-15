@@ -41,6 +41,56 @@
                     <li class="nav-header">BLOG</li>
                     <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
+                    <li class="nav-item {{ request()->routeIs('categories.*') ? 'menu-is-opening menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('categories.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p>
+                                Categorias
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview treeview-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('categories.index') }}"
+                                   class="nav-link {{ request()->routeIs('categories.index') ? 'active' : '' }}">
+                                    <i class="fas fa-list nav-icon"></i>
+                                    <p>Listado</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('categories.create') }}"
+                                   class="nav-link {{ request()->routeIs('categories.create') ? 'active' : '' }}">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Nueva</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item {{ request()->routeIs('tags.*') ? 'menu-is-opening menu-open' : '' }}">
+                        <a href="#" class="nav-link {{ request()->routeIs('tags.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-edit"></i>
+                            <p>
+                                Tags
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview treeview-menu">
+                            <li class="nav-item">
+                                <a href="{{ route('tags.index') }}"
+                                   class="nav-link {{ request()->routeIs('tags.index') ? 'active' : '' }}">
+                                    <i class="fas fa-list nav-icon"></i>
+                                    <p>Listado</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('tags.create') }}"
+                                   class="nav-link {{ request()->routeIs('tags.create') ? 'active' : '' }}">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Nueva</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item {{ request()->routeIs('posts.*') ? 'menu-is-opening menu-open' : '' }}">
                         <a href="#" class="nav-link {{ request()->routeIs('posts.*') ? 'active' : '' }}">
                             <i class="nav-icon fas fa-edit"></i>

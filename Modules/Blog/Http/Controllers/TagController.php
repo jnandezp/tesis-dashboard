@@ -6,15 +6,23 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Modules\Blog\Entities\Tag;
+
 class TagController extends Controller
 {
+
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('blog::index');
+        return view('blog::tags.index');
     }
 
     /**
@@ -23,7 +31,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('blog::create');
+        return view('blog::tags.create');
     }
 
     /**
@@ -41,9 +49,9 @@ class TagController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show(Tag $tag)
     {
-        return view('blog::show');
+        return view('blog::tags.show', compact('tag'));
     }
 
     /**
@@ -51,9 +59,9 @@ class TagController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
-        return view('blog::edit');
+        return view('blog::tags.edit', compact('tag'));
     }
 
     /**

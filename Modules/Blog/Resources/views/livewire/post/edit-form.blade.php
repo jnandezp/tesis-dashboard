@@ -2,7 +2,7 @@
     <div>
         <form method="POST" wire:submit.prevent="edit">
             <div class="card-header">
-                <h3 class="card-title">Nueva Entrada</h3>
+                <h3 class="card-title">Editar Entrada</h3>
             </div>
             <!-- /.card-header -->
             <!-- form start -->

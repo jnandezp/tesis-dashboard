@@ -5,16 +5,24 @@ namespace Modules\Blog\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Blog\Entities\Category;
+
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class CategoryController extends Controller
 {
+
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
-        return view('blog::index');
+        return view('blog::categories.index');
     }
 
     /**
@@ -23,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('blog::create');
+        return view('blog::categories.create');
     }
 
     /**
@@ -41,9 +49,9 @@ class CategoryController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function show($id)
+    public function show(Category $category)
     {
-        return view('blog::show');
+        return view('blog::categories.show', compact('category'));
     }
 
     /**
@@ -51,9 +59,10 @@ class CategoryController extends Controller
      * @param int $id
      * @return Renderable
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        return view('blog::edit');
+        $this->authorize('update', $category);
+        return view('blog::categories.edit', compact('category'));
     }
 
     /**

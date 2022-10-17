@@ -12,7 +12,6 @@
 */
 use Modules\Dashboard\Http\Controllers\DashboardController;
 
-Route::prefix('/')->group(function() {
-    Route::get('/home', [DashboardController::class,'index'])->name('home');
+Route::group(['prefix' => '/', 'as' => 'dashboard.'], function() {
+    Route::get('/home', [DashboardController::class,'index'])->name('index');
 });
-

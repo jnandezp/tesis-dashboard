@@ -37,6 +37,17 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                 data-accordion="false">
+                @if(!empty(Config::get('dashboard.name')))
+                    <li class="nav-header">INICIO</li>
+                    <li class="nav-item">
+                        <a href="{{ route('dashboard.index') }}" class="nav-link {{ request()->routeIs('companies.*') ? 'active' : '' }}">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                @endif
                 @if(!empty(Config::get('blog.name')))
                     <li class="nav-header">BLOG</li>
                     <!-- Add icons to the links using the .nav-icon class

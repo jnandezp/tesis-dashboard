@@ -8,5 +8,6 @@
     "Library": true,
     "Sale": true,
     "Customer": true,
-    "Company": true
+    "Company": true,
+    "Dashboard": true
 }

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +10,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Modules\Dashboard\Http\Controllers\DashboardController;
 
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-Auth::routes(['register' => false]);
+Route::prefix('/')->group(function() {
+    Route::get('/home', [DashboardController::class,'index'])->name('home');
+});
 

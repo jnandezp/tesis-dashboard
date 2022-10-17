@@ -15,9 +15,13 @@ use Modules\Blog\Http\Controllers\PostController;
 use Modules\Blog\Http\Controllers\CategoryController;
 use Modules\Blog\Http\Controllers\TagController;
 
-Route::group(['prefix' => '', 'as' => 'blog.','middleware'=>'is.admin'], function() {
+Route::group(['prefix' => '', 'as' => 'blog.'], function() {
     Route::get('/',  [BlogController::class, 'index'])->name('index');
 });
+
+/*Route::group(['prefix' => '', 'as' => 'blog.','middleware'=>'is.admin'], function() {
+    Route::get('/',  [BlogController::class, 'index'])->name('index');
+});*/
 
 
 Route::group(['prefix' => 'posts', 'as' => 'posts.','middleware'=>'is.admin'], function() {

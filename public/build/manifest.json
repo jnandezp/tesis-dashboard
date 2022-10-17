@@ -1,10 +1,14 @@
 {
   "resources/js/app.js": {
-    "file": "assets/app.3b6a9c59.js",
+    "file": "assets/app.7a74d6f5.js",
     "src": "resources/js/app.js",
     "isEntry": true,
+    "imports": [
+      "Modules/Blog/Resources/assets/sass/app.scss",
+      "Modules/Blog/Resources/assets/js/app.js"
+    ],
     "css": [
-      "assets/app.5380b351.css"
+      "assets/app.cbf7c96c.css"
     ]
   },
   "Modules/Blog/Resources/assets/sass/app.scss": {
@@ -13,12 +17,12 @@
     "isEntry": true
   },
   "Modules/Blog/Resources/assets/js/app.js": {
-    "file": "assets/app.e5198d1b.js",
+    "file": "assets/app.a2e2fc2f.js",
     "src": "Modules/Blog/Resources/assets/js/app.js",
     "isEntry": true
   },
   "resources/sass/app.scss": {
-    "file": "assets/app.5380b351.css",
+    "file": "assets/app.cbf7c96c.css",
     "src": "resources/sass/app.scss",
     "isEntry": true
   }

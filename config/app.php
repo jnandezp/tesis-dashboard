@@ -200,7 +200,14 @@ return [
 
         Spatie\Permission\PermissionServiceProvider::class,
 
-        Intervention\Image\ImageServiceProvider::class
+        Intervention\Image\ImageServiceProvider::class,
+
+        // QR GENERATOR
+        SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
+
+        // BARCODE GEERATOR
+        Milon\Barcode\BarcodeServiceProvider::class,
+
     ],
 
     /*
@@ -216,7 +223,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Image' => Intervention\Image\Facades\Image::class
+        'Image' => Intervention\Image\Facades\Image::class,
+        'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
+        'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
     ])->toArray(),
 
 ];

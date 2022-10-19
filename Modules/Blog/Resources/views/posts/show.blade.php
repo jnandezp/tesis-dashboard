@@ -21,6 +21,13 @@
                     <div id="editor">
                         {!! $post->content !!}
                     </div>
+                    <div>
+                        <b>Etiquetas:</b>
+                        <br>
+                        @foreach($post->tags as $tag)
+                            <span class="badge badge-info">{{ $tag->name }}</span>
+                        @endforeach
+                    </div>
                 </div>
                 <!-- /.card-body -->
             </div>

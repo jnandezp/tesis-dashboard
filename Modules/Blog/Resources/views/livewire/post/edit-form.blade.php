@@ -23,15 +23,36 @@
 
                 <div class="form-group">
                     <label for="post-category">Categoria</label>
-                    <select class="form-control select2 @error('category') is-invalid @enderror" id="post-category" style="width: 100%;"
-                            wire:model="category" name="category">
-                        <option selected="selected" value="">Selecciona una categoria</option>
-                        @foreach($categories as $categoryId => $categoryName)
-                            <option value="{{ $categoryId }}">{{ $categoryName }}</option>
-                        @endforeach
-                    </select>
+                    <div wire:ignore>
+                        <select class="form-control select2 @error('category') is-invalid @enderror" id="post-category"
+                                style="width: 100%;"
+                                wire:model="category" name="category">
+                            <option selected="selected" value="">Selecciona una categoria</option>
+                            @foreach($categories as $categoryId => $categoryName)
+                                <option value="{{ $categoryId }}">{{ $categoryName }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     @error('category')
                     <span id="post-category-error" class="error invalid-feedback">
+                            {{ $message }}
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
+                    <label for="post-tag">Etiqueta</label>
+                    <div wire:ignore>
+                        <select class="form-control select2 @error('tag') is-invalid @enderror" multiple="multiple"
+                                data-placeholder="Selecciona una Etiqueta" id="post-tag" style="width: 100%;"
+                                wire:model="tag" name="tag">
+                            @foreach($tags as $tagId => $tagName)
+                                <option value="{{ $tagId }}">{{ $tagName }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('tag')
+                    <span id="post-tag-error" class="error invalid-feedback" style="display: block;">
                             {{ $message }}
                         </span>
                     @enderror
@@ -103,7 +124,32 @@
     </div>
 
 </div>
-
+@push('pre-css')
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/plugins/select2/css/select2.min.css">
+@endpush
 @push('script')
+    <script src="/plugins/select2/js/select2.min.js"></script>
+    <script>
+        //Initialize Select2 Elements
+        var selectTag = $('#post-tag.select2').select2();
+        selectTag.on('change', function (e) {
+            var data = selectTag.select2("val");
+            @this.set('tag', data);
+        });
+
+        var selectCategory = $('#post-category.select2').select2();
+
+        selectCategory.on('change', function (e) {
+            var data = selectCategory.select2("val");
+            @this.set('category', data);
+        });
+
+        // INIT
+        window.addEventListener('load', function () {
+            selectTag.val(JSON.parse({!! json_encode($tag) !!})).trigger("change");
+            selectCategory.val({{ $category }}).trigger("change");
+        });
+    </script>
     @include('blog::livewire.post._script_ckeditor_on_content')
 @endpush

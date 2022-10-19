@@ -48,6 +48,11 @@ class Post extends Model implements HasMedia
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'post_tag','post_id','tag_id');
+    }
+
     protected static function newFactory()
     {
         return \Modules\Blog\Database\factories\PostFactory::new();

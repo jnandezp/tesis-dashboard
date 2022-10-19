@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id')->default(1);
-            $table->unsignedBigInteger('tag_id')->nullable();
             $table->string('title');
             $table->longText('content');
             $table->text('cover')->nullable();

@@ -15,6 +15,10 @@
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    @stack('pre-css')
+    @yield('pre-css')
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -24,13 +28,13 @@
     {{--<script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/super-build/ckeditor.js"></script>--}}
     <script src="/plugins/ckeditor/ckeditor.js"></script>
 
-    @livewireStyles
+
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
     @stack('css')
     @yield('css')
+    @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
